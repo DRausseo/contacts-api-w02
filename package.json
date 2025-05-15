@@ -1,10 +1,11 @@
 {
   "name": "danny",
   "version": "1.0.0",
-  "description": "��#\u0000 \u0000c\u0000s\u0000e\u00003\u00004\u00000\u0000d\u0000e\u0000m\u0000o\u0000\r\u0000 \u0000",
+  "description": "API REST para contactos usando Node.js, Express y MongoDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,11 @@
     "express-ejs-layouts": "^2.5.1",
     "express-messages": "^1.0.1",
     "express-session": "^1.18.0",
-    "mongoose": "^8.14.2"
+    "mongoose": "^8.14.2",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

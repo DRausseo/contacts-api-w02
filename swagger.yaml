@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Contact API
+  version: 1.0.0
+  description: API para administrar contactos
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api/contacts:
+    get:
+      summary: Obtener todos los contactos
+      responses:
+        '200':
+          description: Lista de contactos
+    post:
+      summary: Crear nuevo contacto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '201':
+          description: Contacto creado
+
+  /api/contacts/{id}:
+    get:
+      summary: Obtener contacto por ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Contacto encontrado
+        '404':
+          description: No encontrado
+
+    put:
+      summary: Actualizar contacto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+      responses:
+        '200':
+          description: Contacto actualizado
+
+    delete:
+      summary: Eliminar contacto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Contacto eliminado
