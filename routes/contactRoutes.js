@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const contactController = require('../controllers/contactController');
+const contactController = require('../controllers/contactsController');
 
-// Rutas CRUD completas
-router.get('/', contactController.getAllContacts);         // Leer todos
-router.get('/:id', contactController.getContactById);      // Leer uno por ID
-router.post('/', contactController.createContact);         // Crear
-router.put('/:id', contactController.updateContact);       // Actualizar
-router.delete('/:id', contactController.deleteContact);    // Eliminar
+router.get('/', contactController.getAllContacts);
+router.get('/:id', contactController.getContactById);
+router.post('/', contactController.createContact);
+router.put('/:id', contactController.updateContact);
+router.delete('/:id', contactController.deleteContact);
 
 module.exports = router;
-

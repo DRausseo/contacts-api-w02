@@ -1,27 +1,31 @@
 openapi: 3.0.0
 info:
-  title: Contact API
+  title: Contacts API
+  description: API for managing contact information
   version: 1.0.0
-  description: API para administrar contactos
 
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:3000/api
 
 paths:
-  /api/contacts:
+  /contacts:
     get:
-      summary: Obtener todos los contactos
+      summary: Get all contacts
       responses:
         '200':
-          description: Lista de contactos
+          description: List of contacts
     post:
-      summary: Crear nuevo contacto
+      summary: Create a new contact
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required:
+                - name
+                - email
+                - phone
               properties:
                 name:
                   type: string
@@ -31,11 +35,11 @@ paths:
                   type: string
       responses:
         '201':
-          description: Contacto creado
+          description: Contact created successfully
 
-  /api/contacts/{id}:
+  /contacts/{id}:
     get:
-      summary: Obtener contacto por ID
+      summary: Get contact by ID
       parameters:
         - name: id
           in: path
@@ -44,12 +48,12 @@ paths:
             type: string
       responses:
         '200':
-          description: Contacto encontrado
+          description: Contact found
         '404':
-          description: No encontrado
+          description: Contact not found
 
     put:
-      summary: Actualizar contacto
+      summary: Update contact by ID
       parameters:
         - name: id
           in: path
@@ -71,10 +75,12 @@ paths:
                   type: string
       responses:
         '200':
-          description: Contacto actualizado
+          description: Contact updated
+        '404':
+          description: Contact not found
 
     delete:
-      summary: Eliminar contacto
+      summary: Delete contact by ID
       parameters:
         - name: id
           in: path
@@ -83,4 +89,6 @@ paths:
             type: string
       responses:
         '200':
-          description: Contacto eliminado
+          description: Contact deleted
+        '404':
+          description: Contact not found
